@@ -9,17 +9,24 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends JavaPlugin {
 
-    private Main plugin;
+    public Main plugin;
 
     @Override
     public void onLoad() {
         saveDefaultConfig();
+        try {
+            startBot();
+        } catch (LoginException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void main(String[] arguments)
+    private void startBot()
             throws LoginException, InterruptedException
     {
-        JDA api = JDABuilder.createDefault(this.getConfig().getString("bot.token"))
+        JDA api = JDABuilder.createDefault(plugin.getConfig().getString("bot.token"))
                 .addEventListeners(new DiscordChatMessage())
                 .build().awaitReady();
     }
