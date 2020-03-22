@@ -13,6 +13,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onLoad() {
         saveDefaultConfig();
+        new Bot(this);
     }
 
 

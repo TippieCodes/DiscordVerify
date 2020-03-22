@@ -9,7 +9,7 @@ import javax.security.auth.login.LoginException;
 public class Bot {
     public Main plugin;
     public JDA jda;
-    public void bot(Main main){
+    public Bot(Main main){
         this.plugin = main;
         startBot();
     }
