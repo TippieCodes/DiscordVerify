@@ -1,2 +1,5 @@
 bot:
   token: "<insert your bot token here>"
+  status: "your server ip"
+  statuswebsite: "https://yourserverwebsite.com/"
+  discordserverid: "<server id here>"

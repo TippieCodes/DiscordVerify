@@ -14,6 +14,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onLoad() {
         saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         new Bot(this);
         new VerifyCommand(this);
     }

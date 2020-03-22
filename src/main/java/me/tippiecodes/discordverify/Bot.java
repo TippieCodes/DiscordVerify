@@ -4,6 +4,8 @@ import me.tippiecodes.discordverify.listeners.DiscordChatMessage;
 import me.tippiecodes.discordverify.utils.Utils;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Guild;
 import org.bukkit.Bukkit;
 
 import javax.security.auth.login.LoginException;
@@ -21,6 +23,7 @@ public class Bot {
         try {
             jda = JDABuilder.createDefault(plugin.getConfig().getString("bot.token"))
                     .addEventListeners(new DiscordChatMessage())
+                    .setActivity(Activity.streaming(plugin.getConfig().getString("bot.status"), plugin.getConfig().getString("bot.statuswebsite")))
                     .build().awaitReady();
             Bukkit.getServer().getConsoleSender().sendMessage(Utils.chat("&a[DiscordVerify] Successfully logged into discord!"));
         } catch (LoginException | InterruptedException e) {
@@ -28,4 +31,8 @@ public class Bot {
         }
     }
 
+    public Guild getMainGuild() {
+        if (jda == null) return null;
+        return jda.getGuilds().get(0);
+    }
 }
