@@ -1,8 +1,10 @@
 package me.tippiecodes.discordverify;
 
 import me.tippiecodes.discordverify.listeners.DiscordChatMessage;
+import me.tippiecodes.discordverify.utils.Utils;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import org.bukkit.Bukkit;
 
 import javax.security.auth.login.LoginException;
 
@@ -20,6 +22,7 @@ public class Bot {
             jda = JDABuilder.createDefault(plugin.getConfig().getString("bot.token"))
                     .addEventListeners(new DiscordChatMessage())
                     .build().awaitReady();
+            Bukkit.getServer().getConsoleSender().sendMessage(Utils.chat("&a[DiscordVerify] Successfully logged into discord!"));
         } catch (LoginException | InterruptedException e) {
             e.printStackTrace();
         }
