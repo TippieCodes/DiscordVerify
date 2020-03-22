@@ -3,3 +3,9 @@ version: 1.0
 author: TippieCodes
 main: me.tippiecodes.discordverify.Main
 description: A plugin to let players verify their discord account on your minecraft server.
+
+commands:
+  verify:
+    usage: /<command>
+    aliases: [discordverify]
+    description: Use this command to verify your minecraft account with your discord account.
