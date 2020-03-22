@@ -1,0 +1,5 @@
+name: DiscordVerify
+version: 1.0
+author: TippieCodes
+main: me.tippiecodes.discordverify.Main
+description: A plugin to let players verify their discord account on your minecraft server.
