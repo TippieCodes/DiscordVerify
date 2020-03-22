@@ -1,5 +1,6 @@
 package me.tippiecodes.discordverify;
 
+import me.tippiecodes.discordverify.commands.VerifyCommand;
 import me.tippiecodes.discordverify.listeners.DiscordChatMessage;
 import me.tippiecodes.discordverify.utils.Utils;
 import net.dv8tion.jda.api.JDA;
@@ -34,5 +35,8 @@ public class Bot {
     public Guild getMainGuild() {
         if (jda == null) return null;
         return jda.getGuilds().get(0);
+    }
+    public JDA getJda() {
+        return jda;
     }
 }

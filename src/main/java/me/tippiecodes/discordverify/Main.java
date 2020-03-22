@@ -10,15 +10,12 @@ import javax.security.auth.login.LoginException;
 
 public class Main extends JavaPlugin {
 
-    public Main plugin;
     @Override
-    public void onLoad() {
+    public void onEnable() {
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         saveConfig();
         new Bot(this);
         new VerifyCommand(this);
     }
-
-
 }

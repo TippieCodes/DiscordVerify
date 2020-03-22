@@ -6,6 +6,5 @@ description: A plugin to let players verify their discord account on your minecr
 
 commands:
   verify:
-    usage: /<command>
     aliases: [discordverify]
-    description: Use this command to verify your minecraft account with your discord account.
+    description: Verify command.
