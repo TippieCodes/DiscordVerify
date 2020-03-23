@@ -5,14 +5,16 @@ import me.tippiecodes.discordverify.Bot;
 import me.tippiecodes.discordverify.Main;
 import me.tippiecodes.discordverify.utils.Utils;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class VerifyCommand implements CommandExecutor {
+public class VerifyCommand extends ListenerAdapter implements CommandExecutor {
     private Main plugin;
     private Bot bot;
     public VerifyCommand(Main plugin){
@@ -33,11 +35,14 @@ public class VerifyCommand implements CommandExecutor {
                 commandSender.sendMessage(Utils.chat("&cWrong usage! Correct usage: &b/verify <discord#tag>"));
                 return true;
             }
-            Guild guild = bot.getJda().getGuilds().get(0);
-            User dUser = StringUtils.isNumeric(args[0]) ? bot.getJda().getUserById(args[0]) : null;
-            if (dUser == null) {
-                dUser = (User) FinderUtil.findMembers(args[0], guild);
-            }
+//            Guild guild = bot.getMainGuild();
+//            User dUser = StringUtils.isNumeric(args[0]) ? bot.getJda().getUserById(args[0]) : null;
+//            if (dUser == null) {
+//                dUser = (User) FinderUtil.findMembers(args[0], guild);
+//            }
+            TextChannel test = bot.getJda().getTextChannelById("689799839231508488");
+            test.sendMessage(args[0]).queue();
+            User dUser = null;
             if (dUser != null) {
                 commandSender.sendMessage("User found: " + dUser.getName());
             } else {
